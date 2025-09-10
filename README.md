@@ -4,7 +4,7 @@
 
 ### Integrantes do Grupo 3
 - Rayane Amaro dos Santos - 2023010280
-- Nome Completo 2 - Matrícula 2
+- Valdeilson Bezerra de Lima - 2023010306
 - Nome Completo 3 - Matrícula 3
 
 ## Objetivo
