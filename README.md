@@ -1,4 +1,4 @@
-# [AP2] Cobertura de código com Jest - Grupo 3
+# [AP2] Cobertura de código com Jest
 ### Disciplina: SEGURANÇA, TESTES E VALIDAÇÃO DE SISTEMAS (2025.1)
 
 
