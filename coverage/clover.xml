@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1757462225187" clover="3.2.0">
+  <project timestamp="1757462225187" name="All files">
+    <metrics statements="30" coveredstatements="30" conditionals="18" coveredconditionals="18" methods="10" coveredmethods="10" elements="58" coveredelements="58" complexity="0" loc="30" ncloc="30" packages="1" files="1" classes="1"/>
+    <file name="order.js" path="/home/valdeilson-lima/Documentos/ANALISE E DESENVOLVIMENTO DE SISTEMAS - ADS/4-Semestre/DISCIPLINAS 2º MODULO/SEGURANÇA, TESTES E VALIDAÇÃO DE SISTEMAS (2025.1)/Gurpo3-AtividadePratica-cobertura-de-codigo-com-Jest/src/order.js">
+      <metrics statements="30" coveredstatements="30" conditionals="18" coveredconditionals="18" methods="10" coveredmethods="10"/>
+      <line num="6" count="12" type="stmt"/>
+      <line num="7" count="12" type="stmt"/>
+      <line num="8" count="12" type="stmt"/>
+      <line num="9" count="12" type="stmt"/>
+      <line num="10" count="12" type="stmt"/>
+      <line num="15" count="15" type="stmt"/>
+      <line num="21" count="3" type="cond" truecount="5" falsecount="0"/>
+      <line num="22" count="2" type="stmt"/>
+      <line num="24" count="1" type="stmt"/>
+      <line num="25" count="1" type="stmt"/>
+      <line num="30" count="2" type="stmt"/>
+      <line num="31" count="3" type="stmt"/>
+      <line num="32" count="2" type="stmt"/>
+      <line num="33" count="2" type="stmt"/>
+      <line num="34" count="2" type="stmt"/>
+      <line num="39" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="40" count="1" type="stmt"/>
+      <line num="42" count="4" type="stmt"/>
+      <line num="47" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="48" count="1" type="stmt"/>
+      <line num="50" count="2" type="stmt"/>
+      <line num="55" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="56" count="1" type="stmt"/>
+      <line num="58" count="1" type="stmt"/>
+      <line num="66" count="9" type="cond" truecount="5" falsecount="0"/>
+      <line num="67" count="2" type="stmt"/>
+      <line num="69" count="7" type="stmt"/>
+      <line num="70" count="7" type="stmt"/>
+      <line num="71" count="7" type="stmt"/>
+      <line num="75" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>

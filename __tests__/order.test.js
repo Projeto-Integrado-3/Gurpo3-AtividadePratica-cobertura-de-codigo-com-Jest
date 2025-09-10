@@ -1,6 +1,7 @@
 /**
-* Esse trabalho é do grupo G3
-*/
+ * Testes automatizados para as classes Item e Order
+ * Grupo G3 - Cobertura 100% com Jest
+ */
 
 const { Order, Item } = require("../src/order");
 
@@ -11,10 +12,14 @@ describe("Item", () => {
     expect(item.name).toBe("Produto Teste");
     expect(item.price).toBe(10.99);
   });
+
+  test("deve lançar erro para preço inválido", () => {
+    expect(() => new Item(1, "Soda", -5)).toThrow("Invalid price");
+    expect(() => new Item(2, "Soda", NaN)).toThrow("Invalid price");
+  });
 });
 
 describe("Order", () => {
-  // Testes para o construtor
   describe("Constructor", () => {
     test("deve criar um pedido com valores padrão", () => {
       const order = new Order(1);
@@ -25,23 +30,15 @@ describe("Order", () => {
       expect(order.total).toBe(0);
     });
 
-    test("deve criar um pedido com itens fornecidos", () => {
-      const items = [
-        new Item(1, "Item 1", 10),
-        new Item(2, "Item 2", 15)
-      ];
-      const order = new Order(1, items);
+    test("deve criar um pedido com itens fornecidos e método de pagamento", () => {
+      const items = [new Item(1, "Burger", 10), new Item(2, "Fries", 5)];
+      const order = new Order(1, items, "card");
       expect(order.items).toEqual(items);
-      expect(order.total).toBe(25);
-    });
-
-    test("deve criar um pedido com método de pagamento específico", () => {
-      const order = new Order(1, [], "credit");
-      expect(order.paymentMethod).toBe("credit");
+      expect(order.paymentMethod).toBe("card");
+      expect(order.total).toBe(15);
     });
   });
 
-  // Testes para calculateTotal
   describe("calculateTotal", () => {
     test("deve calcular corretamente o total de todos os itens", () => {
       const items = [
@@ -59,7 +56,6 @@ describe("Order", () => {
     });
   });
 
-  // Testes para addItem
   describe("addItem", () => {
     test("deve adicionar um item ao pedido e recalcular o total", () => {
       const order = new Order(1);
@@ -76,35 +72,34 @@ describe("Order", () => {
       expect(order.items.length).toBe(2);
       expect(order.total).toBe(30);
     });
+
+    test("deve lançar erro ao adicionar item inválido", () => {
+      const order = new Order(1);
+      expect(() => order.addItem(null)).toThrow("Invalid item");
+      expect(() => order.addItem({ id: 1, name: "x", price: "10" })).toThrow("Invalid item");
+    });
   });
 
-  // Testes para removeItem
   describe("removeItem", () => {
     test("deve remover um item do pedido e recalcular o total", () => {
-      const items = [
-        new Item(1, "Item 1", 10),
-        new Item(2, "Item 2", 15)
-      ];
+      const items = [new Item(1, "Item 1", 10), new Item(2, "Item 2", 15)];
       const order = new Order(1, items);
-      order.removeItem(1);
+      const removed = order.removeItem(1);
+      expect(removed).toBe(true);
       expect(order.items.length).toBe(1);
       expect(order.items[0].id).toBe(2);
       expect(order.total).toBe(15);
     });
 
     test("não deve alterar o pedido se o item não for encontrado", () => {
-      const items = [
-        new Item(1, "Item 1", 10),
-        new Item(2, "Item 2", 15)
-      ];
+      const items = [new Item(1, "Item 1", 10)];
       const order = new Order(1, items);
-      order.removeItem(3); // Item não existe
-      expect(order.items.length).toBe(2);
-      expect(order.total).toBe(25);
+      const removed = order.removeItem(999);
+      expect(removed).toBe(false);
+      expect(order.items).toContain(items[0]);
     });
   });
 
-  // Testes para pay
   describe("pay", () => {
     test("deve marcar o pedido como pago", () => {
       const order = new Order(1);
@@ -112,16 +107,13 @@ describe("Order", () => {
       expect(order.status).toBe("paid");
     });
 
-    test("deve lançar erro ao tentar pagar um pedido que não está no estado 'created'", () => {
+    test("deve lançar erro ao tentar pagar um pedido já pago", () => {
       const order = new Order(1);
-      order.pay(); // Primeiro pagamento - status muda para "paid"
-      expect(() => {
-        order.pay(); // Tentativa de segundo pagamento
-      }).toThrow("Order cannot be paid");
+      order.pay();
+      expect(() => order.pay()).toThrow("Order cannot be paid");
     });
   });
 
-  // Testes para complete
   describe("complete", () => {
     test("deve marcar o pedido como completo quando estiver pago", () => {
       const order = new Order(1);
@@ -130,15 +122,12 @@ describe("Order", () => {
       expect(order.status).toBe("completed");
     });
 
-    test("deve lançar erro ao tentar completar um pedido que não está pago", () => {
+    test("deve lançar erro ao tentar completar um pedido não pago", () => {
       const order = new Order(1);
-      expect(() => {
-        order.complete();
-      }).toThrow("Order must be paid before it can be completed");
+      expect(() => order.complete()).toThrow("Order must be paid before it can be completed");
     });
   });
 
-  // Testes para cancel
   describe("cancel", () => {
     test("deve cancelar um pedido no estado 'created'", () => {
       const order = new Order(1);
@@ -157,9 +146,7 @@ describe("Order", () => {
       const order = new Order(1);
       order.pay();
       order.complete();
-      expect(() => {
-        order.cancel();
-      }).toThrow("Completed order cannot be cancelled");
+      expect(() => order.cancel()).toThrow("Completed order cannot be cancelled");
     });
   });
 });

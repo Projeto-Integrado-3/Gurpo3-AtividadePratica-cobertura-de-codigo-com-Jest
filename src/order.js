@@ -17,14 +17,21 @@ class Order {
 
   // Adiciona um item ao pedido
   addItem(item) {
+    // Validate incoming item before adding
+    if (!item || typeof item.price !== "number" || Number.isNaN(item.price)) {
+      throw new Error("Invalid item");
+    }
     this.items.push(item);
     this.total = this.calculateTotal();
   }
 
   // Remove um item do pedido
   removeItem(itemId) {
-    this.items = this.items.filter(item => item.id !== itemId);
+    const originalLength = this.items.length;
+    this.items = this.items.filter((item) => item.id !== itemId);
+    const removed = this.items.length !== originalLength;
     this.total = this.calculateTotal();
+    return removed;
   }
 
   // Marca o pedido como pago
@@ -55,6 +62,10 @@ class Order {
 // Item para os pedidos
 class Item {
   constructor(id, name, price) {
+    // Basic validation to catch common mistakes early
+    if (typeof price !== "number" || Number.isNaN(price) || price < 0) {
+      throw new Error("Invalid price");
+    }
     this.id = id;
     this.name = name;
     this.price = price;

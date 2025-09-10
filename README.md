@@ -1,6 +1,7 @@
 # [AP2] Cobertura de código com Jest - Grupo 3
 ### Disciplina: SEGURANÇA, TESTES E VALIDAÇÃO DE SISTEMAS (2025.1)
 
+
 ### Integrantes do Grupo 3
 - Rayane Amaro dos Santos - 2023010280
 - Nome Completo 2 - Matrícula 2
@@ -43,7 +44,7 @@ Todos os testes atingem 100% de cobertura em todas as métricas.
 
 ## Instruções Originais
 
-- Clone ou faça fork deste repositório.  
-- Crie testes automatizados em `__tests__/order.test.js` usando Jest.  
-- Seu objetivo é atingir 100% de cobertura (linhas, ramos, funções, instruções).  
+- Clone ou faça fork deste repositório.
+- Crie testes automatizados em `__tests__/order.test.js` usando Jest.
+- Seu objetivo é atingir 100% de cobertura (linhas, ramos, funções, instruções).
 - Submeta os testes via **pull request** para este repositório.
