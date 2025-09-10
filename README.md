@@ -5,7 +5,7 @@
 ### Integrantes do Grupo 3
 - Rayane Amaro dos Santos - 2023010280
 - Valdeilson Bezerra de Lima - 2023010306
-- Nome Completo 3 - Matrícula 3
+- Marcondes Alves Duarte - 2023010217
 
 ## Objetivo
 Implementar testes automatizados usando Jest para o código fornecido, alcançando 100% de cobertura em todas as métricas do Jest (linhas, ramos, funções e instruções).
